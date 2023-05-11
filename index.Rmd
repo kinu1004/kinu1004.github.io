@@ -2,9 +2,9 @@
 title: Review on relationship between three factors, GDP (PPP) per capita, Religiosity
   and Fertility
 output:
-  github_document: default
-  word_document: default
   html_document: default
+  word_document: default
+  github_document: default
   pdf_document: default
 date: "2023-05-11"
 ---
