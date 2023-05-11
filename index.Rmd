@@ -2,10 +2,10 @@
 title: Review on relationship between three factors, GDP (PPP) per capita, Religiosity
   and Fertility
 output:
-  html_document: default
+  pdf_document: default
   word_document: default
   github_document: default
-  pdf_document: default
+  html_document: default
 date: "2023-05-11"
 ---
 # Analysis and Visualisation for the PSY6422 module project
@@ -71,30 +71,6 @@ ggplot(df, aes(x = PPP, y = Fertility, color = Fertility)) +
     plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
     axis.title = element_text(size = 12, face = "bold"),
     axis.text = element_text(size = 10))
-```
-```{r, echo=TRUE}
-## Animation
-df_sorted1 <- df[order(df$PPP), ] #sort data by PPP
-
-# Initial plot object setting
-p1 <- ggplot(df_sorted1, aes(x = PPP, y = Fertility, color = Fertility)) +
-  geom_point() +
-  labs(x = "PPP per Capita (in USD)", y = "Fertility rate", 
-       title = "Relationship between PPP per Capita (in USD) \nand Fertility rate", 
-       caption = "Data Source: Statistics Times and World Population Review") +
-  scale_color_viridis_c(option = "magma") +
-  theme_classic() +
-  theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text = element_text(size = 10))
-
-# Animate the plot
-animated_plot1 <- p1 + transition_manual(PPP, cumulative = TRUE) +
-  enter_grow()
-
-# Preview the animation
-animate(animated_plot1)
 ```
 
 The general relationship between fertility rate and PPP show a negative correlation. Therefore, hypothesis 1 is supported here.
@@ -263,31 +239,6 @@ ggplot(df, aes(x = Religiosity, y = Fertility, color = Fertility)) +
     axis.title = element_text(size = 12, face = "bold"),
     axis.text = element_text(size = 10))
 ```
-```{r, echo=TRUE}
-## Animation
-# Sort the data by Religiosity
-df_sorted2 <- df[order(df$Religiosity), ]
-
-# Create the initial plot object
-p2 <- ggplot() +
-  geom_point(data = df_sorted2, aes(x = Religiosity, y = Fertility, color = Fertility)) +
-  labs(x = "Religiosity", y = "Fertility rate", 
-       title = "Relationship between Religiosity \nand Fertility rate", 
-       caption = "Data Source: Statistics Times and World Population Review") +
-  scale_color_viridis_c(option = "magma") +
-  theme_classic() +
-  theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text = element_text(size = 10))
-
-# Animate the plot
-animated_plot2 <- p2 + transition_manual(Religiosity, cumulative = TRUE) +
-  enter_grow()
-
-# Preview the animation
-animate(animated_plot2)
-```
 
 Unlike the initial assumption, more religious countries did not show greater fertility rate. It turned out rather opposite. The hypothesis 2 that religious countries would have more babies, is rejected.
 
@@ -453,31 +404,6 @@ ggplot(df, aes(x = PPP, y = Religiosity, color = Religiosity)) +
     plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
     axis.title = element_text(size = 12, face = "bold"),
     axis.text = element_text(size = 10))
-```
-```{r, echo=TRUE}
-## Animation
-# Sort the data by Religiosity
-df_sorted1 <- df[order(df$PPP), ]
-
-# Create the initial plot object
-p3 <- ggplot() +
-  geom_point(data = df_sorted1, aes(x = PPP, y = Religiosity, color = Religiosity)) +
-  labs(x = "PPP per Capita (in USD)", y = "Religiosity", 
-       title = "Relationship between PPP per Capita \nand Religiosity", 
-       caption = "Data Source: Statistics Times and World Population Review") +
-  scale_color_viridis_c(option = "magma") +
-  theme_classic() +
-  theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text = element_text(size = 10))
-
-# Animate the plot
-animated_plot3 <- p3 + transition_manual(PPP, cumulative = TRUE) +
-  enter_grow()
-
-# Preview the animation
-animate(animated_plot3)
 ```
 
 Again, hypothesis 3, expecting a negative relationship between PPP per capita and religiosity, is rejected. 
